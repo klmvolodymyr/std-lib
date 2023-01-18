@@ -1,0 +1,29 @@
+{
+    "name": "volodymyr-klymniuk/std-lib",
+    "description": "Internal library std",
+    "type": "library",
+    "license": "PIR",
+    "autoload": {
+        "psr-4": {
+            "VolodymyrKlymniuk\\StdLib\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Volodymyr Klymniuk",
+            "email": "Volodymyr.Klymniuk@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require-dev": {
+        "phpunit/phpunit": "10.0.x-dev"
+    },
+    "scripts": {
+        "test": "phpunit"
+    }
+}
