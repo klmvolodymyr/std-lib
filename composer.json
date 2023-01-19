@@ -2,7 +2,7 @@
     "name": "volodymyr-klymniuk/std-lib",
     "description": "Internal library std",
     "type": "library",
-    "license": "SPDX",
+    "license": "MIT-advertising",
     "autoload": {
         "psr-4": {
             "VolodymyrKlymniuk\\StdLib\\": "src/"
