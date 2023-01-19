@@ -4,6 +4,9 @@ namespace VolodymyrKlymniuk\StdLib\Time;
 
 class Time
 {
+    /**
+     * @var int|null
+     */
     private $time;
 
     public function __construct(int $time = null)
@@ -24,14 +27,6 @@ class Time
         $this->time = $time;
 
         return $this;
-    }
-
-//    final private function validate(int $second): void
-    private function validate(int $second): void
-    {
-        if ($second < 0 || $second >= 86400) {
-            throw new \RangeException(sprintf(__CLASS__ . ': incorrect value "%s"', $second));
-        }
     }
 
     public function getHours(): int
@@ -63,20 +58,26 @@ class Time
     {
         $second = 0;
         preg_match('/^(\d+):(\d+)(:(\d+))?$/', $str, $match);
+
         if (count($match) < 2) {
             throw new \RangeException(sprintf(__CLASS__ . ': impossible parse "%s"', $str));
         }
         $hours = (int) $match[1];
         $minutes = (int) $match[2];
+
         if ($hours < 0 || $hours >= 24) {
             throw new \RangeException(sprintf(__CLASS__ . ': impossible value "%s" for hours', $hours));
         }
+
         if ($minutes < 0 || $minutes >= 60) {
             throw new \RangeException(sprintf(__CLASS__ . ': impossible value "%s" for minutes', $minutes));
         }
+
         $second += 3600 * $hours + 60 * $minutes;
+
         if (array_key_exists(4, $match)) {
             $seconds = $match[4];
+
             if ($seconds < 0 || $seconds >= 60) {
                 throw new \RangeException(sprintf(__CLASS__ . ': impossible value "%s" for seconds', $seconds));
             }
@@ -88,6 +89,19 @@ class Time
 
     public function __toString(): string
     {
-        return sprintf("%'.02d:%'.02d:%'.02d", $this->getHours(), $this->getMinutes(), $this->getSeconds());
+        return sprintf(
+            "%'.02d:%'.02d:%'.02d",
+            $this->getHours(),
+            $this->getMinutes(),
+            $this->getSeconds()
+        );
+    }
+
+//    final private function validate(int $second): void
+    private function validate(int $second): void
+    {
+        if ($second < 0 || $second >= 86400) {
+            throw new \RangeException(sprintf(__CLASS__ . ': incorrect value "%s"', $second));
+        }
     }
 }

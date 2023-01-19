@@ -3,6 +3,7 @@
 namespace Tests\Enum;
 
 use PHPUnit\Framework\TestCase;
+use VolodymyrKlymniuk\StdLib\Enum\GenderEnum;
 
 class GenderEnumTest extends TestCase
 {

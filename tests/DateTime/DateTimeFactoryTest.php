@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace Tests\DateTime;
 
+use PHPUnit\Framework\TestCase;
+use VolodymyrKlymniuk\StdLib\DateTime\DateTimeFactory;
+
 class DateTimeFactoryTest extends TestCase
 {
-
     /**
      * @dataProvider setNextTimeProvider
      *

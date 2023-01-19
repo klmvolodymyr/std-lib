@@ -44,7 +44,6 @@ class ObjectMapper
     {
         switch (true) {
             case is_array($data):
-
                 foreach ($data as $field => $value) {
                     $this->mapField((string) $field, $value);
                 }

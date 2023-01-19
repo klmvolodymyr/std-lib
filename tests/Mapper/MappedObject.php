@@ -2,32 +2,25 @@
 
 namespace Tests\Mapper;
 
+use VolodymyrKlymniuk\StdLib\Collection\GenericCollection;
+
 class MappedObject
 {
-    /**
-     * @var object
-     */
-    public $subObject1;
-    /**
-     * @var object
-     */
-    private $subObject2;
     /**
      * @var GenericCollection
      */
     public $generic1;
+
     /**
      * @var GenericCollection
      */
     private $generic2;
-    /**
-     * @var array
-     */
-    public $array1;
-    /**
-     * @var array
-     */
-    private $array2;
+
+    public $subObject1;
+    private $subObject2;
+    public array $array1 = [];
+    private array $array2 = [];
+
     /**
      * @var int
      */

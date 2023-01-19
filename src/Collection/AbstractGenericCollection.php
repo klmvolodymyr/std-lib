@@ -1,15 +1,16 @@
 <?php
-//declare(strict_types=1);
 
 namespace VolodymyrKlymniuk\StdLib\Collection;
 
 abstract class AbstractGenericCollection extends \ArrayIterator
 {
-    public function __construct(array $values = [])
+    public function __construct(array $array = [])
     {
-        foreach ($values as $value) {
+        foreach ($array as $value) {
             $this->append($value);
         }
+
+        parent::__construct([]);
     }
 
     abstract public function getType(): string;

@@ -31,6 +31,7 @@ class PeriodFactory
             default:
                 $end->modify('next day');
         }
+
         $end->modify('-1 second');
 
         return new DateTimeRange($start, $end);

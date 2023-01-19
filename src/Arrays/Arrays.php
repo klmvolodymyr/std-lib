@@ -17,6 +17,7 @@ class Arrays
     public static function extractByField(iterable $list, string $field): array
     {
         $result = [];
+
         foreach ($list as $item) {
             $result[] = Helper::getItemValue($item, $field);
         }
@@ -33,6 +34,7 @@ class Arrays
     public static function indexByField(iterable $list, string $field): array
     {
         $result = [];
+
         foreach ($list as $item) {
             $result[$item[$field]] = $item;
         }

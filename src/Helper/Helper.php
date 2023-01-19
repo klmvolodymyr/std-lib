@@ -34,6 +34,7 @@ class Helper
     public static function underscoreToCamelCase(string $string, bool $capitalizeFirstChar = false): string
     {
         $str = str_replace(' ', '', ucwords(str_replace('_', ' ', $string)));
+
         if (!$capitalizeFirstChar) {
             $str[0] = strtolower($str[0]);
         }
@@ -74,7 +75,8 @@ class Helper
 
     /**
      * @deprecated
-     * @see \PhpSolution\StdLib\Arrays\Arrays::extractByField
+     *
+     * @see \VolodymyrKlymniuk\StdLib\Arrays\Arrays::extractByField
      *
      * @param array  $list
      * @param string $field
@@ -93,7 +95,7 @@ class Helper
 
     /**
      * @deprecated
-     * @see \PhpSolution\StdLib\Arrays\Arrays::indexByField
+     * @see \VolodymyrKlymniuk\StdLib\Arrays\Arrays::indexByField
      *
      * @param array  $list
      * @param string $field
@@ -103,6 +105,7 @@ class Helper
     public static function indexListByField(array $list, string $field): array
     {
         $result = [];
+
         foreach ($list as $item) {
             $result[self::getItemValue($item, $field)] = $item;
         }

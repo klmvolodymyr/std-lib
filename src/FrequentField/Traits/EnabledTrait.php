@@ -2,6 +2,8 @@
 
 namespace VolodymyrKlymniuk\StdLib\FrequentField\Traits;
 
+use VolodymyrKlymniuk\StdLib\FrequentField\Interfaces\EnabledInterface;
+
 trait EnabledTrait
 {
     /**

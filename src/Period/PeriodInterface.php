@@ -2,7 +2,9 @@
 
 namespace VolodymyrKlymniuk\StdLib\Period;
 
-interface PeriodInterface
+use VolodymyrKlymniuk\StdLib\Range\RangeInterface;
+
+interface PeriodInterface extends RangeInterface
 {
     /**
      * @return \DateTime|null

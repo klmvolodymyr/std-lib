@@ -2,6 +2,7 @@
 
 namespace VolodymyrKlymniuk\StdLib\Range;
 
+use VolodymyrKlymniuk\StdLib\Object\EmptyInterface;
 use VolodymyrKlymniuk\StdLib\Period\PeriodInterface;
 
 class DateTimeRange implements PeriodInterface, EmptyInterface

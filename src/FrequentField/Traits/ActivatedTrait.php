@@ -6,7 +6,7 @@ use VolodymyrKlymniuk\StdLib\FrequentField\Interfaces\ActivatedInterface;
 
 trait ActivatedTrait
 {
-    protected $active = false;
+    protected bool $active = false;
 
     public function isActive(): bool
     {

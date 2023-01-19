@@ -9,11 +9,12 @@ trait JsonSerializableTrait
     public function jsonSerialize(): array
     {
         $result = [];
+
         foreach ($this as $key => $value) {
             $result[$key] = $value instanceof \DateTimeInterface
-                ? $value->format(\DateTime::W3C)
-                : $value;
+                ? $value->format(\DateTime::W3C)  : $value;
         }
+
         return $result;
     }
 }

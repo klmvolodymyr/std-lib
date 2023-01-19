@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Tests\Arrays;
 
 use PHPUnit\Framework\TestCase;
+use VolodymyrKlymniuk\StdLib\Arrays\ArrayComparator;
 
 final class ArrayComparatorTest extends TestCase
 {

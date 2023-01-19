@@ -6,6 +6,7 @@
          colors="true"
          cacheResult="false"
          printerClass="PHPUnit\Util\TestDox\CliTestDoxPrinter"
+         bootstrap="vendor/autoload.php"
 >
     <testsuites>
         <testsuite name="Project Test Suite">

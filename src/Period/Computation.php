@@ -12,11 +12,6 @@ class Computation
 {
     /**
      * Checks, does period $a and $b intersect
-     *
-     * @param PeriodInterface $a
-     * @param PeriodInterface $b
-     *
-     * @return bool
      */
     static public function isIntersect(PeriodInterface $a, PeriodInterface $b): bool
     {
@@ -25,9 +20,7 @@ class Computation
         $bStart = $b->getFrom();
         $bEnd = $b->getTo();
 
-        return $aStart > $bStart
-            ? $bEnd >= $aStart || $bEnd === null
-            : $aEnd >= $bStart || $aEnd === null;
+        return $aStart > $bStart  ? $bEnd >= $aStart || $bEnd === null : $aEnd >= $bStart || $aEnd === null;
     }
 
     /**
@@ -45,12 +38,8 @@ class Computation
         }
 
         $subtrahend = self::expand(clone $subtrahend);
-
-        $isSubtrahendStartBeforeMinuend = $subtrahend->getFrom() === null ||
-            ($minuend->getFrom() !== null && ($minuend->getFrom() > $subtrahend->getFrom()));
-
-        $isSubtrahendEndAfterMinuend = $subtrahend->getTo() === null ||
-            ($minuend->getTo() !== null && $minuend->getTo() < $subtrahend->getTo());
+        $isSubtrahendStartBeforeMinuend = $subtrahend->getFrom() === null || ($minuend->getFrom() !== null && ($minuend->getFrom() > $subtrahend->getFrom()));
+        $isSubtrahendEndAfterMinuend = $subtrahend->getTo() === null ||  ($minuend->getTo() !== null && $minuend->getTo() < $subtrahend->getTo());
 
         switch (true) {
             case $isSubtrahendStartBeforeMinuend && $isSubtrahendEndAfterMinuend:
@@ -85,21 +74,24 @@ class Computation
     static public function merge(PeriodInterface $a, PeriodInterface $b)
     {
         $collection = new ConsequenceCollection();
+        $changed = false;
+
         if (!self::isIntersect($a, self::expand(clone $b))) {
             return $collection;
         }
 
-        $changed = false;
         if ($a->getFrom() > $b->getFrom()) {
             $a->setFrom($b->getFrom());
             $changed = true;
         }
+
         if ($a->getTo() !== null && ($b->getTo() === null || $a->getTo() < $b->getTo())) {
             $a->setTo($b->getTo());
             $changed = true;
         }
 
         $collection[] = new Destruction($b);
+
         if ($changed) {
             $collection[] = new Change($a);
         }
@@ -118,16 +110,18 @@ class Computation
     static public function truncate(PeriodInterface $minuend, PeriodInterface $to)
     {
         $changed = false;
+        $collection = new ConsequenceCollection();
+
         if ($to->getFrom() !== null && $to->getFrom() > $minuend->getFrom()) {
             $changed = true;
             $minuend->setFrom(clone $to->getFrom());
         }
+
         if ($to->getTo() !== null && ($to->getTo() < $minuend->getTo() || $minuend->getTo() === null)) {
             $changed = true;
             $minuend->setTo(clone $to->getTo());
         }
 
-        $collection = new ConsequenceCollection();
         if ($changed) {
             $collection[] = new Change($minuend);
         }
@@ -163,7 +157,9 @@ class Computation
     static public function sort(array &$list)
     {
         usort($list, function (PeriodInterface $a, PeriodInterface $b) {
+
             if ($a->getFrom() === $b->getFrom()) {
+
                 if ($a->getTo() === $b->getTo()) {
                     return 0;
                 }

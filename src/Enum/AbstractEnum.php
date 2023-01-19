@@ -8,10 +8,7 @@ abstract class AbstractEnum
      * @var mixed
      */
     protected $value;
-    /**
-     * @var bool
-     */
-    protected $strict = true;
+    protected bool $strict = true;
 
     /**
      * @param mixed $value
@@ -31,12 +28,7 @@ abstract class AbstractEnum
      */
     abstract protected static function getAllowedValues();
 
-    /**
-     * @param mixed $value
-     *
-     * @return bool
-     */
-    protected function isValid($value)
+    protected function isValid($value): bool
     {
         return in_array($value, $this->getAllowedValues(), $this->strict);
     }
@@ -49,19 +41,11 @@ abstract class AbstractEnum
         return $this->value;
     }
 
-    /**
-     * @param mixed $value
-     *
-     * @return bool
-     */
     public function is($value): bool
     {
         return $value === $this->value;
     }
 
-    /**
-     * @return string
-     */
     public static function getDescription(): string
     {
         $descriptions = [];
@@ -72,17 +56,11 @@ abstract class AbstractEnum
         return 'Allowed values: ' . implode(', ', $descriptions);
     }
 
-    /**
-     * @return array
-     */
     public static function getDescriptions(): array
     {
         return [];
     }
 
-    /**
-     * @return string
-     */
     public function __toString()
     {
         return (string) $this->value;

@@ -3,6 +3,7 @@
 namespace Tests\Collection;
 
 use PHPUnit\Framework\TestCase;
+use VolodymyrKlymniuk\StdLib\Collection\GenericCollection;
 
 class GenericCollectionTest extends TestCase
 {

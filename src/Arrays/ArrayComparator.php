@@ -78,6 +78,7 @@ class ArrayComparator
         if (array_key_exists($key, $this->actual) && array_key_exists($key, $this->expected)) {
             $actual = (int) ($this->actual[$key] * pow(10, $precision));
             $expected = (int) ($this->expected[$key] * pow(10, $precision));
+
             if ($actual !== $expected) {
                 $this->fail();
             }
@@ -109,6 +110,7 @@ class ArrayComparator
                 unset($this->expected[$key]);
             }
         }
+
         foreach ($this->actual as $key => $value) {
             if (null === $value) {
                 unset($this->actual[$key]);
@@ -128,12 +130,14 @@ class ArrayComparator
         if (!$this->result || $this->checkSubArray($key)) {
             return $this;
         }
+
         if (
             count(array_diff($this->expected[$key], $this->actual[$key])) > 0 ||
             count(array_diff($this->actual[$key], $this->expected[$key])) > 0
         ) {
             $this->result = false;
         }
+
         $this->skip($key);
 
         return $this;
@@ -149,6 +153,7 @@ class ArrayComparator
         if (!$this->result || $this->checkSubArray($key)) {
             return new StubArrayComparator($this);
         }
+
         $subComparator = new self($this->actual[$key], $this->expected[$key], $this);
         $this->skip($key);
 
@@ -166,6 +171,7 @@ class ArrayComparator
         if (!$this->result || $this->checkSubArray($key)) {
             return $this;
         }
+
         if (count($this->actual[$key]) !== count($this->expected[$key])) {
             $this->fail();
 
@@ -177,7 +183,9 @@ class ArrayComparator
         };
 
         foreach ($this->actual[$key] as $i => $item) {
+
             if (array_key_exists($i, $this->expected[$key])) {
+
                 if ($comparisonFoo($this->actual[$key][$i], $this->expected[$key][$i])) {
                     continue;
                 }

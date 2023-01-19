@@ -33,6 +33,7 @@ trait ToArrayTrait
                         $value[$i] = $v->toArray($withNull);
                     }
                 }
+
                 $result[$key] = $value;
             }
         }

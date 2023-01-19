@@ -16,7 +16,10 @@ class MapperTest extends TestCase
             'subObject1' => ['a' => 'aa', 'b' => 'bb'],
             'subObject2' => ['a' => 'aaa', 'b' => 'bbb'],
             'generic1' => [new \DateTime()],
-            'generic2' => [['from' => new \DateTime('-1 day'), 'to' => new \DateTime()]],
+            'generic2' => [[
+                'from' => new \DateTime('-1 day'),
+                'to' => new \DateTime()
+            ]],
             'array1' => [1, 2, 3],
             'array2' => [4, 5, 6],
             'scalar1' => 8,

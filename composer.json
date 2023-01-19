@@ -24,6 +24,6 @@
         "phpunit/phpunit": "10.0.x-dev"
     },
     "scripts": {
-        "test": "phpunit"
+        "test": "phpunit -c "
     }
 }
